@@ -61,19 +61,21 @@ def divide_into_frames(videos_dir, frames_dir, nb_of_frames_per_video, start_fra
                         current_frame += 1
                     else:
                         # in case error occures
-                        print("ERROR while creating frame: " + str(current_frame) + "from video" + str(filename))
+                        print("Error while reading frame number: " + str(current_frame) + " from video: " + str(filename))
                         current_frame += 1
                         frame_creation_errors += 1
             # end processing of the video
             video.release()
             cv2.destroyAllWindows()
-            print("Video processed succesfully.")
+            print("Video processed successfully.")
     # display summary
     print("\n\nProcess done. \n")
     print("Number of videos processed:")
     print(video_processed)
     print("\nNumber of frames created: ")
-    print(nb_of_frames_per_video * video_processed - frame_creation_errors)        
+    print(nb_of_frames_per_video * video_processed - frame_creation_errors)   
+    print("\nNumber of error occurences: ")  
+    print(frame_creation_errors)   
 
 # call function
 divide_into_frames(videos_directory, frames_directory, 10, 60, 2)
