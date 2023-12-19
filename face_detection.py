@@ -32,7 +32,7 @@ def detect_faces_in_directory(dir_path, destination_path):
                 # w, y, w, h are coordinates stored for every face detected
                 for (x, y, w, h) in faces:
                     # draw a rectangle around a face detected
-                    cv2.rectangle(image, (x, y), (x+w, y+h), (0, 0, 255), 2)
+                    #cv2.rectangle(image, (x, y), (x+w, y+h), (0, 0, 255), 2)
                     # cut image to a size of a rectangle where face is detected
                     faces = image[y:y + h, x:x + w]
                     # write obtained image to a destination folder
