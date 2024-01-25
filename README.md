@@ -9,3 +9,4 @@ Requirements:
 
 To prepare data, pipeline.py file has to be completed (paths to folders added). In videos_folder videos from the UvA-NEMO Smile Database have to be added.
 Then data can be trained, validate and tested using custom_nn.py file.
+Obtained model in tfLite format can be used in Android Studio Application.
