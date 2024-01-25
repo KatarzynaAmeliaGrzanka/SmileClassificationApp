@@ -3,6 +3,45 @@ import shutil
 
 
 def divide_data(source_path, train_data_path, validation_data_path, test_data_path, train_t, val_t, test_t):
+    ## Function for dividing data into train, validate and test folders
+    # Input parameters:
+    #   -source_path: string, path to directory where data is stored
+    #   -train_data_path: string, path to directory where training data should be stored
+    #   -validation_data_path: string, path to directory where validation data should be stored
+    #   -test_data_path: string, path to directory where test data should be stored
+    #   - train_t - threshold for training data
+    #   - train_t - threshold for validation data
+    #   - train_t - threshold for testing data
+
+    if not os.path.exists(source_path):
+        raise FileNotFoundError (f"Source directory not found")
+    if not os.path.exists(train_data_path):
+        raise FileNotFoundError (f"Train directory not found")
+    if not os.path.exists(validation_data_path):
+        raise FileNotFoundError (f"Validation directory not found")
+    if not os.path.exists(test_t):
+        raise FileNotFoundError (f"Test directory not found")
+    
+    try: 
+        train_t = int(train_t)
+    except ValueError:
+        print("Invalid parameter train_t.")
+        return
+    try: 
+        val_t = int(val_t)
+    except ValueError:
+        print("Invalid parameter val_t.")
+        return
+    try: 
+        test_t = int(test_t)
+    except ValueError:
+        print("Invalid parameter test_t.")
+        return
+
+    if train_t < 0 or val_t < 0 or test_t < 0:
+        print("Invalid parameters.")
+        return
+
     count1 = 0
     count2 = 0
     count3 = 0
@@ -45,6 +84,14 @@ def divide_data(source_path, train_data_path, validation_data_path, test_data_pa
     print(str(count3) + " images were put in test directory. ")           
 
 def divide_into_spontaneous_and_deliberate_folders(source_path, deliberate_path, spontaneous_path):
+     ## Function for dividing data into two folders (spontaneous and deliberate)
+     #   -source_path: string, path to directory where data is stored
+     #   -deliberate_path: string, path to directory where deliberate data should be stored
+     #   -spontaneous_path: string, path to directory where spontaneous data should be stored
+
+     if not os.path.exists(source_path):
+        raise FileNotFoundError (f"Source directory not found")
+     
      if not os.path.exists(deliberate_path):
         os.makedirs(deliberate_path)
      if not os.path.exists(spontaneous_path):
@@ -72,15 +119,3 @@ def divide_into_spontaneous_and_deliberate_folders(source_path, deliberate_path,
      print("Images with deliberate smiles: " + str(deliberate_count))
      print("Images with spontaneous smiles: " + str(spontaneous_count))
 
-#divide_data('C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/aligned_faces', 
-#            'C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/train_data', 
-#            'C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/validation_data',
-#            'C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/test_data',
-#            410, 515, 564)
-
-#print("Test folder.")
-#divide_into_spontaneous_and_deliberate_folders('C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/test_data', 'C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/test_data/deliberate', 'C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/test_data/spontaneous' )
-#print("Validation folder.")
-#divide_into_spontaneous_and_deliberate_folders('C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/validation_data', 'C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/validation_data/deliberate', 'C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/validation_data/spontaneous' )
-print("Train folder.")
-divide_into_spontaneous_and_deliberate_folders('C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/train_data', 'C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/train_data/deliberate', 'C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/train_data/spontaneous' )

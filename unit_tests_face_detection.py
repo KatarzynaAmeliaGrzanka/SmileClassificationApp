@@ -5,11 +5,11 @@ import pathlib as pl
 
 class UnitTestDetectFaces(unittest.TestCase):
     def test_not_existing_source_dir(self):
-        with self.assertRaises(IOError) and self.assertRaises(SystemExit):
+        with self.assertRaises(FileNotFoundError):
             detect_faces_in_directory("non-existing-directory", "C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/unit-tests-data/existing_directory")
 
     def test_not_existing_destination_dir(self):
-        with self.assertRaises(IOError) and self.assertRaises(SystemExit):
+        with self.assertRaises(FileNotFoundError):
             detect_faces_in_directory("C:/Users/pazie/Documents/Computer Science/SmileClassificationApp_data/unit-tests-data/existing_directory", "non-existing-directory")
 
     def test_new_image_in_destination_dir(self):
